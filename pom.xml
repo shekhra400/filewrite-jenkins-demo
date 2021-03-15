@@ -32,14 +32,12 @@
 				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
-						<muleVersion>${mule.version}</muleVersion>
-						<username>shekshukla</username>
-					    <password>Kansas@12345</password>
-					    <applicationName>testfirst</applicationName>
-					    <environment>Sandbox</environment>
-					    <workers>1</workers>
-					    <workerType>Micro</workerType>
-					    <environment>Sandbox</environment>
+				      <muleVersion>${mule.version}</muleVersion>
+				      <username>${anypoint.username}</username>
+				      <password>${anypoint.password}</password>
+				      <applicationName>${appname}</applicationName>
+				      <environment>${env}</environment>
+				      <workers>${workers}</workers>
 			    	</cloudHubDeployment>
 				</configuration>
 			</plugin>
