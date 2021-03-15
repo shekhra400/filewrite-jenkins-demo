@@ -56,4 +56,15 @@ payload map ( payload01 , indexOfPayload01 ) -> {
 		</choice>
 		<logger level="INFO" doc:name="Logger" doc:id="dd12620f-6c20-4e11-a422-6049727ed72d" />
 	</flow>
+	<flow name="filewrite-jenkins-demoFlow1" doc:id="be833737-ec4e-49bc-8ed1-d584fc01a6ed" >
+		<http:listener doc:name="Listener" doc:id="20f0d06f-9a48-4b22-8f5b-ad74598e6ce7" config-ref="HTTP_Listener_config" path="/foreachdemo"/>
+		<logger level="INFO" doc:name="Logger" doc:id="cb04765a-a9e5-4588-bb25-81ce209987e0" />
+		<foreach doc:name="For Each" doc:id="a0276994-3485-4e1d-8761-652ef7ab7bca" >
+			<logger level="INFO" doc:name="Logger" doc:id="7d9397d1-250d-4203-a5ee-52a67055aa71" />
+			<set-variable value="#[payload]" doc:name="Set Variable" doc:id="de79d619-9737-460a-972d-3df40d2a975e" variableName="lastItem" />
+			<set-payload value='#["Inner payload"]' doc:name="Set Payload" doc:id="daef4cdc-ef33-43e3-9c22-db5efbf154ec" />
+			<logger level="INFO" doc:name="Logger" doc:id="0a02ffa1-8cdf-4169-9572-b8f2b7a66ae5" />
+		</foreach>
+		<logger level="INFO" doc:name="Logger" doc:id="5301ac2f-74d5-46eb-99ea-d11ae9373043" message="#[payload]"/>
+	</flow>
 </mule>
