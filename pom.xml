@@ -40,7 +40,6 @@
 				      <workers>${workers}</workers>
 				      <region>eu-west-2</region>
             		  <workerType>{workerType}</workerType>
-            		  <workers>{workers}</workers>
 					  <businessGroup>{businessGroup}</businessGroup>
 			    	</cloudHubDeployment>
 				</configuration>
