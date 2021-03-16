@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Deploy Nexus') {
       steps {
-        nexusArtifactUploader artifacts: [[artifactId: "filewrite-jenkins-demo", classifier: "", file: "C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\Filewrite_Jenkins_Pipeline\target\filewrite-jenkins-demo-1.0.0-mule-application.jar", type: "jar"]], credentialsId: "Nexusrepo", groupId: "com.mycompany", nexusUrl: "localhost:9091", nexusVersion: "nexus2", protocol: "http", repository: "file-write-jenkins-demo", version: "1.0.0"
+        nexusArtifactUploader artifacts: [[artifactId: "filewrite-jenkins-demo", classifier: "", file: "C://Windows//System32//config//systemprofile//AppData//Local//Jenkins//.jenkins//workspace//Filewrite_Jenkins_Pipeline//target//filewrite-jenkins-demo-1.0.0-mule-application.jar", type: "jar"]], credentialsId: "Nexusrepo", groupId: "com.mycompany", nexusUrl: "localhost:9091", nexusVersion: "nexus2", protocol: "http", repository: "file-write-jenkins-demo", version: "1.0.0"
       }
     }
     stage('Deploy CloudHub') { 
