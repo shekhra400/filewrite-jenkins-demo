@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Deploy Nexus') {
       steps {
-        bat 'nexusArtifactUploader artifacts: [[artifactId: 'mywebapp', classifier: '', file: 'workspace/Filewrite_Jenkins_Pipeline/target/*.jar', type: 'jar']], credentialsId: 'Nexusrepo', groupId: 'mywebapp', nexusUrl: 'localhost:9091', nexusVersion: 'nexus2', protocol: 'http', repository: 'file-write-jenkins-demo', version: '1.0.0''
+        bat 'nexusArtifactUploader artifacts: [[artifactId: "mywebapp", classifier: "", file: "workspace/Filewrite_Jenkins_Pipeline/target/filewrite-jenkins-demo-1.0.0-SNAPSHOT-mule-application.jar", type: "jar"]], credentialsId: "Nexusrepo", groupId: "mywebapp", nexusUrl: "localhost:9091", nexusVersion: "nexus2", protocol: "http", repository: "file-write-jenkins-demo", version: "1.0.0"'
       }
     }
     stage('Deploy CloudHub') { 
