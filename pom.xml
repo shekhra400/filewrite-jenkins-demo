@@ -39,8 +39,8 @@
 				      <environment>${env}</environment>
 				      <workers>${workers}</workers>
 				      <region>eu-west-2</region>
-            		  <workerType>{workerType}</workerType>
-					  <businessGroup>{businessGroup}</businessGroup>
+            		  <workerType>${workerType}</workerType>
+					  <businessGroup>${businessGroup}</businessGroup>
 			    	</cloudHubDeployment>
 				</configuration>
 			</plugin>
