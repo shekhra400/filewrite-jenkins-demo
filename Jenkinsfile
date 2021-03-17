@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Project Build') { 
       steps {
-        bat 'mvn clean install'
+        bat 'mvn -s C://Users//shekshukla//.m2//settings.xml clean install'
         echo "env.JAVA_HOME"
       }
     }
