@@ -4,12 +4,12 @@ pipeline {
   	string(name:'MAVEN_SETTINGS', defaultValue: 'C://Users//shekshukla//.m2//settings.xml')
   }
   stages {
-  	when {
+    stage('Project Build') { 
+    when {
   		expression {
   			params.MAVEN_SETTINGS
   		}
   	}
-    stage('Project Build') { 
       steps {
         bat "mvn -s ${params.MAVEN_SETTINGS} clean install"
       }
