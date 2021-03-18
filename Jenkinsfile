@@ -19,6 +19,7 @@ pipeline {
 		  // or inside double quotes for string interpolation
 		  echo "username is $USERNAME"
 		}
+		echo "--------$USERNAME-----"
         bat "mvn -s ${params.MAVEN_SETTINGS_XML} clean install"
       }
     }
@@ -38,7 +39,7 @@ pipeline {
       echo "*************CloudHub Deployment start***************"
       echo "-------------${anypoint_USR}---------------"
       echo "--------------${anypoint_PSW}-------------"
-        bat "mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=${ANYPOINT_CREDENTIALS_USR} -Danypoint.password=${ANYPOINT_CREDENTIALS_PSW} -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -DworkerType=Micro -DbusinessGroup='Deloitte Integration Service'"
+        bat "mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=$ANYPOINT_CREDENTIALS_USR -Danypoint.password=$ANYPOINT_CREDENTIALS_PSW -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -DworkerType=Micro -DbusinessGroup='Deloitte Integration Service'"
       }
     }
     
