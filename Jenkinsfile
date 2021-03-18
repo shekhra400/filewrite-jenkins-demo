@@ -22,10 +22,9 @@ pipeline {
         anypoint = credentials('ANYPOINT_CREDENTIALS')
       }
       steps {
-     
-		
+ 
       echo "*************CloudHub Deployment start***************"
-        bat "mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=$anypoint_USR -Danypoint.password=$anypointPSW -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -DworkerType=Micro -DbusinessGroup='Deloitte Integration Service'"
+        bat "mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=$anypoint_USR -Danypoint.password=$anypoint_PSW -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -DworkerType=Micro -DbusinessGroup='Deloitte Integration Service'"
       }
       
     }
