@@ -1,9 +1,15 @@
 pipeline {
   agent any
+  tools {
+  	maven 'Maven'
+  }
+  parameters {
+  	string(name:'MAVEN_SETTINGS', defaultValue: 'C://Users//shekshukla//.m2//settings.xml')
+  }
   stages {
     stage('Project Build') { 
       steps {
-        bat 'mvn clean install'
+        bat 'mvn -s C://Users//shekshukla//.m2//settings.xml clean install'
       }
     }
     stage('Deploy to Nexus Artifactory') {
