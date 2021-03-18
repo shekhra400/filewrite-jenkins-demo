@@ -32,13 +32,14 @@ pipeline {
 		  echo "---USERNAME---------${USERNAME}-----"
 		  echo "---USERNAME---------$USERNAME-----"
 		
-		}
+		
       echo "*************CloudHub Deployment start***************"
       echo '----USERNAME--------${USERNAME}-----'
 		  echo '---USERNAME---------$USERNAME-----'
 		  echo "---USERNAME---------${USERNAME}-----"
 		  echo "---USERNAME---------$USERNAME-----"
         bat "mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=$USERNAME -Danypoint.password=$PASSWORD -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -DworkerType=Micro -DbusinessGroup='Deloitte Integration Service'"
+      }
       }
     }
     
