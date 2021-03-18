@@ -4,12 +4,7 @@ pipeline {
   	string(name:'MAVEN_SETTINGS_XML', defaultValue: 'C://Users//shekshukla//.m2//settings.xml', description:'Please provide the path of maven settings.xml')
   }
   stages {
-    stage('Project Build') { 
-    when {
-  		expression {
-  			params.MAVEN_SETTINGS
-  		}
-  	}
+    stage('Project Build') {
       steps {
         bat "mvn -s ${params.MAVEN_SETTINGS_XML} clean install"
       }
