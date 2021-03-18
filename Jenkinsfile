@@ -5,8 +5,24 @@ pipeline {
   }
   stages {
     stage('Project Build') {
+    	withCredentials([usernamePassword(credentialsId: 'ANYPOINT_CREDENTIALS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+  // available as an env variable, but will be masked if you try to print it out any which way
+  // note: single quotes prevent Groovy interpolation; expansion is by Bourne Shell, which is what you want
+  sh 'echo $PASSWORD'
+  // also available as a Groovy variable
+  echo USERNAME
+  // or inside double quotes for string interpolation
+  echo "username is $USERNAME"
+}
       steps {
         bat "mvn -s ${params.MAVEN_SETTINGS_XML} clean install"
+      }
+    }
+    
+     stage('Deploy to Nexus Artifactory') {
+      steps {
+      	echo "*************Nexus Deployment start***************"
+        bat "mvn -s ${params.MAVEN_SETTINGS_XML} deploy:deploy-file -DgroupId=com.mycompany -DartifactId=filewrite-jenkins-demo -Dversion=1.0.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=nexus -Durl=http://localhost:9091/repository/filewrite-jenkins-demo -Dfile=target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
       }
     }
     
@@ -16,9 +32,9 @@ pipeline {
       }
       steps {
       echo "*************CloudHub Deployment start***************"
-      echo "*************${anypoint_USR}***************"
-      echo "*************${anypoint_PSW}***************"
-        bat 'mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=$ANYPOINT_CREDENTIALS_USR -Danypoint.password=$ANYPOINT_CREDENTIALS_PSW -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -DworkerType=Micro -DbusinessGroup="Deloitte Integration Service"'
+      echo "-------------${anypoint_USR}---------------"
+      echo "--------------${anypoint_PSW}-------------"
+        bat "mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=${ANYPOINT_CREDENTIALS_USR} -Danypoint.password=${ANYPOINT_CREDENTIALS_PSW} -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -DworkerType=Micro -DbusinessGroup='Deloitte Integration Service'"
       }
     }
     
