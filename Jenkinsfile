@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  tools {
-  	maven 'Maven'
-  }
   parameters {
   	string(name:'MAVEN_SETTINGS', defaultValue: 'C://Users//shekshukla//.m2//settings.xml')
   }
