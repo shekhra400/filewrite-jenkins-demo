@@ -7,9 +7,14 @@ pipeline {
   	string(name:'MAVEN_SETTINGS', defaultValue: 'C://Users//shekshukla//.m2//settings.xml')
   }
   stages {
+  	when {
+  		expression {
+  			params.MAVEN_SETTINGS
+  		}
+  	}
     stage('Project Build') { 
       steps {
-        bat 'mvn -s C://Users//shekshukla//.m2//settings.xml clean install'
+        bat "mvn -s ${params.MAVEN_SETTINGS} clean install"
       }
     }
     stage('Deploy to Nexus Artifactory') {
