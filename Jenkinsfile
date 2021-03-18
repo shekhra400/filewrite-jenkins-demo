@@ -7,19 +7,6 @@ pipeline {
     stage('Project Build') {
     	
       steps {
-      	withCredentials([usernamePassword(credentialsId: 'ANYPOINT_CREDENTIALS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-		  // available as an env variable, but will be masked if you try to print it out any which way
-		  // note: single quotes prevent Groovy interpolation; expansion is by Bourne Shell, which is what you want
-		  echo '--------${USERNAME}-----'
-		  echo '--------$USERNAME-----'
-		  echo "--------${USERNAME}-----"
-		  echo "--------$USERNAME-----"
-		  // also available as a Groovy variable
-		  echo USERNAME
-		  // or inside double quotes for string interpolation
-		  echo "username is $USERNAME"
-		}
-		echo "--------$USERNAME-----"
         bat "mvn -s ${params.MAVEN_SETTINGS_XML} clean install"
       }
     }
@@ -32,6 +19,14 @@ pipeline {
     }
     
     stage('Deploy CloudHub') {
+    	withCredentials([usernamePassword(credentialsId: 'ANYPOINT_CREDENTIALS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+		  
+		}
+		echo '--------${USERNAME}-----'
+		  echo '--------$USERNAME-----'
+		  echo "--------${USERNAME}-----"
+		  echo "--------$USERNAME-----"
+		
       environment {
         anypoint = credentials('ANYPOINT_CREDENTIALS')
       }
