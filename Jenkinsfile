@@ -5,7 +5,6 @@ pipeline {
   }
   stages {
     stage('Project Build') {
-    	
       steps {
         bat "mvn -s ${params.MAVEN_SETTINGS_XML} clean install"
       }
@@ -19,22 +18,27 @@ pipeline {
     }
     
     stage('Deploy CloudHub') {
-    	withCredentials([usernamePassword(credentialsId: 'ANYPOINT_CREDENTIALS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-		  
-		}
-		echo '--------${USERNAME}-----'
-		  echo '--------$USERNAME-----'
-		  echo "--------${USERNAME}-----"
-		  echo "--------$USERNAME-----"
+    
+    	
 		
       environment {
         anypoint = credentials('ANYPOINT_CREDENTIALS')
       }
       steps {
+      
+      withCredentials([usernamePassword(credentialsId: 'ANYPOINT_CREDENTIALS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+		  echo '----USERNAME--------${USERNAME}-----'
+		  echo '---USERNAME---------$USERNAME-----'
+		  echo "---USERNAME---------${USERNAME}-----"
+		  echo "---USERNAME---------$USERNAME-----"
+		
+		}
       echo "*************CloudHub Deployment start***************"
-      echo "-------------${anypoint_USR}---------------"
-      echo "--------------${anypoint_PSW}-------------"
-        bat "mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=$ANYPOINT_CREDENTIALS_USR -Danypoint.password=$ANYPOINT_CREDENTIALS_PSW -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -DworkerType=Micro -DbusinessGroup='Deloitte Integration Service'"
+      echo '----USERNAME--------${USERNAME}-----'
+		  echo '---USERNAME---------$USERNAME-----'
+		  echo "---USERNAME---------${USERNAME}-----"
+		  echo "---USERNAME---------$USERNAME-----"
+        bat "mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=$USERNAME -Danypoint.password=$PASSWORD -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -DworkerType=Micro -DbusinessGroup='Deloitte Integration Service'"
       }
     }
     
