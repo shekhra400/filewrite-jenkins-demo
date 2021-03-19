@@ -1,13 +1,7 @@
 pipeline {
   agent any
   parameters {
-  	string(name:'MAVEN_SETTINGS_XML')
-  	string(name:'appname')
-  	string(name:'env')
-  	string(name:'workerType')
-  	string(name:'workers')
-  	string(name:'workerType')
-  	
+  	string(name:'MAVEN_SETTINGS_XML',defaultValue: 'C://Users//shekshukla//.m2//settings.xml')
   	
   }
   environment {
