@@ -11,7 +11,7 @@ pipeline {
   	
   }
   environment {
-        ANYPOINT_CREDENTIALS = credentials('APCred') 
+        ANYPOINT_CREDENTIALS = credentials('ANYPOINT_CREDENTIALS') 
       }
   stages {
     stage('Project Build') {
