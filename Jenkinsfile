@@ -5,7 +5,7 @@ pipeline {
   	
   }
   environment {
-        ANYPOINT_CREDENTIALS = credentials('ANYPOINT_CREDENTIALS') 
+        ANYPOINT_CRED = credentials('ANYPOINT_CREDENTIALSS') 
       }
   stages {
     stage('Project Build') {
@@ -14,15 +14,13 @@ pipeline {
       }
     }
     
-
-    
     stage('Deploy CloudHub') {
      
       steps {
       
 
       echo "*************CloudHub Deployment start**************"
-        bat "mvn clean deploy -Dmule.version=4.3.0 -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -DworkerType=Micro -DmuleDeploy -DskipTests"
+        bat bat "mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=${ANYPOINT_CRED_USR} -Danypoint.password=${ANYPOINT_CRED_PSW} -Denv=Test -Dappname=filewrite-jenkins-demo1 -Dworkers=1 -DworkerType=Micro"
       }
       
     }

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>filewrite-jenkins-demo</artifactId>
+	<artifactId>filewrite-jenkins-demo1</artifactId>
     <version>1.0.0</version>
     <packaging>mule-application</packaging>
 
