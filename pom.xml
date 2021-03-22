@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>filewrite-jenkins-demo1</artifactId>
+	<artifactId>filewrite-jenkins-demo</artifactId>
     <version>1.0.0</version>
     <packaging>mule-application</packaging>
 
@@ -40,7 +40,7 @@
 				      <workers>${workers}</workers>
 				      <region>eu-west-2</region>
             		  <workerType>${workerType}</workerType>
-					  <businessGroup>${businessGroup}</businessGroup>
+					  <businessGroup>Deloitte Integration Services</businessGroup>
 			    	</cloudHubDeployment>
 				</configuration>
 			</plugin>
