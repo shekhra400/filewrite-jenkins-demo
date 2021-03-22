@@ -22,7 +22,7 @@ pipeline {
       
 
       echo "*************CloudHub Deployment start**************"
-        bat "mvn clean package deploy -Dmule.version=4.3.0 -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -DworkerType=Micro -DmuleDeploy -DskipTests"
+        bat "mvn clean deploy -Dmule.version=4.3.0 -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -DworkerType=Micro -DmuleDeploy -DskipTests"
       }
       
     }
