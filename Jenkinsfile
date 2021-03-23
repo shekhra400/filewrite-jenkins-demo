@@ -1,3 +1,4 @@
+def myVariable = "Deloitte Integration Services"
 pipeline {
   agent any
   parameters {
@@ -26,7 +27,7 @@ pipeline {
       steps {
 
       	echo "*************CloudHub Deployment start**************"
-        bat "mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=${ANYPOINT_CRED_USR} -Danypoint.password=${ANYPOINT_CRED_PSW} -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -Dregion=us-east-1 -DworkerType=Micro"
+        bat "mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=${ANYPOINT_CRED_USR} -Danypoint.password=${ANYPOINT_CRED_PSW} -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -Dregion=us-east-1 -DworkerType=Micro -DbusinessGroup=${myVariable}"
       }
       
     }
