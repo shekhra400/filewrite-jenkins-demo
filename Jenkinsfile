@@ -48,8 +48,7 @@ pipeline {
 		*/
 		export filename = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
 		
-		bat 'anypoint-cli runtime-mgr cloudhub-application deploy --runtime "$(RUNTIME)" --workers "$(WORKERS)" --workerSize "$(WORKER_SIZE)" --region 
-		"$(REGION)" $(APP_NAME) $filename'
+		bat 'anypoint-cli runtime-mgr cloudhub-application deploy --runtime "$(RUNTIME)" --workers "$(WORKERS)" --workerSize "$(WORKER_SIZE)" --region "$(REGION)" $(APP_NAME) $filename'
    
       }
       
