@@ -34,7 +34,6 @@ pipeline {
         MULE_VERSION= '4.3.0'
         WORKERS = 1
         REGION = "us-east-1"
-        #WORKER_TYPE = "Micro"
         WORKER_SIZE = "0.1"
       }  
 
