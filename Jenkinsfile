@@ -6,7 +6,14 @@ pipeline {
   	
   }
   environment {
-        ANYPOINT_CRED = credentials('ANYPOINT_CREDENTIALSS') 
+        ANYPOINT_CRED = credentials('ANYPOINT_CREDENTIALSS')
+        ENVIRONMENT = "Sandbox"
+        BUSEINSSGROUP = "Deloitte integration services"
+        APP_NAME = "filewrite-jenkins-demo"
+        MULE_VERSION= '4.3.0'
+        WORKERS = 1
+        REGION = "us-east-1"
+        WORKER_SIZE = "0.1"
       }
   stages {
     stage('Project Build') {
@@ -25,18 +32,7 @@ pipeline {
     stage('Deploy CloudHub') {
      
       steps {
-      
-      environment {
-        ANYPOINT_CRED = credentials('ANYPOINT_CREDENTIALSS')
-        ENVIRONMENT = "Sandbox"
-        BUSEINSSGROUP = "Deloitte integration services"
-        APP_NAME = "filewrite-jenkins-demo"
-        MULE_VERSION= '4.3.0'
-        WORKERS = 1
-        REGION = "us-east-1"
-        WORKER_SIZE = "0.1"
-      }  
-
+     
       	echo "*************CloudHub Deployment start**************"
       	
   		/* bat 'npm install -g anypoint-cli@latest'
