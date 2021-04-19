@@ -40,7 +40,7 @@ pipeline {
 		*/
 		
 		
-		bat "anypoint-cli runtime-mgr cloudhub-application deploy --runtime '$(RUNTIME)' --workers '$(WORKERS)' --workerSize '$(WORKER_SIZE)' --region '$(REGION)' $(APP_NAME) $FILENAME"
+		bat "anypoint-cli runtime-mgr cloudhub-application list"
    
       }
       
