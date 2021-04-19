@@ -3,6 +3,7 @@ pipeline {
   agent any
   parameters {
   	string(name:'MAVEN_SETTINGS_XML',defaultValue: 'C://Users//shekshukla//.m2//settings.xml')
+  	string(name:'FILENAME',defaultValue: 'target/filewrite-jenkins-demo-1.0.0-mule-application.jar')
   	
   }
   environment {
@@ -34,10 +35,12 @@ pipeline {
 
 		#export ANYPOINT_PROFILE="Sandbox"
 		#export filename="$(Release.PrimaryArtifactSourceAlias)/drop/target/anypoint-cli-test-1.0.0-SNAPSHOT-mule-application.jar"
-		*/
-		export filename = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
 		
-		bat 'anypoint-cli runtime-mgr cloudhub-application deploy --runtime "$(RUNTIME)" --workers "$(WORKERS)" --workerSize "$(WORKER_SIZE)" --region "$(REGION)" $(APP_NAME) $filename'
+		export filename = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
+		*/
+		
+		
+		bat 'anypoint-cli runtime-mgr cloudhub-application deploy --runtime "$(RUNTIME)" --workers "$(WORKERS)" --workerSize "$(WORKER_SIZE)" --region "$(REGION)" $(APP_NAME) $FILENAME'
    
       }
       
