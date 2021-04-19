@@ -39,20 +39,18 @@ pipeline {
 
       	echo "*************CloudHub Deployment start**************"
       	
-  		#bat 'npm install -g anypoint-cli@latest'
+  		/* bat 'npm install -g anypoint-cli@latest'
 		#mkdir ~/.anypoint
 		#cp $WORKSPACE_TMP/credentials ~/.anypoint/
 
 		#export ANYPOINT_PROFILE="Sandbox"
 		#export filename="$(Release.PrimaryArtifactSourceAlias)/drop/target/anypoint-cli-test-1.0.0-SNAPSHOT-mule-application.jar"
+		*/
 		export filename = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
 		
 		anypoint-cli runtime-mgr cloudhub-application deploy --runtime "$(RUNTIME)" --workers "$(WORKERS)" --workerSize "$(WORKER_SIZE)" --region 
 		"$(REGION)" $(APP_NAME) $filename
-      	
-        
-        
-        #'bat "mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.3.0 -Danypoint.username=${ANYPOINT_CRED_USR} -Danypoint.password=${ANYPOINT_CRED_PSW} -Denv=Test -Dappname=filewrite-jenkins-demo -Dworkers=1 -Dregion=us-east-1 -DworkerType=Micro -DbusinessGroup=${myVariable}"
+   
       }
       
     }
