@@ -22,13 +22,6 @@ pipeline {
       }
     }
     
-    stage('Deploy to Nexus Artifactory') {
-      steps {
-      	echo "*************Nexus Deployment start**************"
-        bat "mvn -s ${params.MAVEN_SETTINGS_XML} deploy:deploy-file -DgroupId=com.mycompany -DartifactId=filewrite-jenkins-demo -Dversion=1.0.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=nexus -Durl=http://localhost:9091/repository/filewrite-jenkins-demo -Dfile=target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
-      }
-    }
-    
     stage('Deploy CloudHub') {
      
       steps {
