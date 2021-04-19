@@ -29,9 +29,12 @@ pipeline {
      
       	echo "*************CloudHub Deployment start**************"
       	
+      	bat 'npm install -g anypoint-cli@latest'
+      	bat 'mkdir .anypoint'
+      	bat 'copy C://Users//shekshukla//.anypoint//credentials //.anypoint//'
+      	
        /*	
        bat 'copy C://Users//shekshukla//.anypoint//credentials ~//.anypoint//'
-  		 bat 'npm install -g anypoint-cli@latest'
   		
 		#mkdir ~/.anypoint
 		#cp $WORKSPACE_TMP/credentials ~/.anypoint/
