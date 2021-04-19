@@ -41,7 +41,7 @@ pipeline {
 		*/
 		
 		
-		bat "anypoint-cli runtime-mgr cloudhub-application list"
+		bat 'anypoint-cli runtime-mgr cloudhub-application list'
    
       }
       
