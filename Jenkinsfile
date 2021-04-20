@@ -48,7 +48,7 @@ pipeline {
 		export filename = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
 		*/
 		
-		sh '~/.nvm/versions/node/v16.0.0/bin/anypoint-cli --username="%ANYPOINT_CRED_USR%" --password="%ANYPOINT_CRED_PSW%" runtime-mgr cloudhub-application list'
+		sh '~/.nvm/versions/node/v16.0.0/bin/anypoint-cli --username="shekshukla" '
       
     }
     
