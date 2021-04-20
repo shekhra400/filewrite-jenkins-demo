@@ -14,6 +14,7 @@ pipeline {
         REGION = "us-east-1"
         WORKER_SIZE = "0.1"
         FILENAME = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
+        ANYPOINT_CLI = C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli
       }
   stages {
    /*
@@ -48,7 +49,7 @@ pipeline {
 		*/
 		
 		
-		bat 'C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli --username="%ANYPOINT_CRED_USR%" --password="%ANYPOINT_CRED_PSW%" runtime-mgr cloudhub-application deploy --environment="Test" --runtime "4.3.0" --workers %WORKERS% --workerSize %WORKER_SIZE% --region %REGION% %APP_NAME% %FILENAME%'
+		bat '%ANYPOINT_CLI% --username="%ANYPOINT_CRED_USR%" --password="%ANYPOINT_CRED_PSW%" runtime-mgr cloudhub-application deploy --environment="Test" --runtime %MULE_VERSION% --workers %WORKERS% --workerSize %WORKER_SIZE% --region %REGION% %APP_NAME% %FILENAME%'
    
       }
       
