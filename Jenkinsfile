@@ -49,7 +49,7 @@ pipeline {
 		*/
 		
 		
-		anypoint-cli --username="%ANYPOINT_CRED_USR%" --password="%ANYPOINT_CRED_PSW%" runtime-mgr cloudhub-application deploy --environment="Test" --runtime %MULE_VERSION% --workers %WORKERS% --workerSize %WORKER_SIZE% --region %REGION% %APP_NAME% %FILENAME%
+		anypoint-cli --username="%ANYPOINT_CRED_USR%" --password="%ANYPOINT_CRED_PSW%" runtime-mgr cloudhub-application list
    
       }
       
