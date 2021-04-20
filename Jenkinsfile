@@ -3,8 +3,6 @@ pipeline {
   agent any
   parameters {
   	string(name:'MAVEN_SETTINGS_XML',defaultValue: 'C://Users//shekshukla//.m2//settings.xml')
-  	string(name:'FILENAME',defaultValue: 'target/filewrite-jenkins-demo-1.0.0-mule-application.jar')
-  	
   }
   environment {
         ANYPOINT_CRED = credentials('ANYPOINT_CREDENTIALSS')
@@ -15,6 +13,7 @@ pipeline {
         WORKERS = 1
         REGION = "us-east-1"
         WORKER_SIZE = "0.1"
+        FILENAME = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
       }
   stages {
     stage('Project Build') {
@@ -47,7 +46,7 @@ pipeline {
 		*/
 		
 		
-		bat 'C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli --username=shekshukla --password=Kansas@12345 runtime-mgr cloudhub-application list '
+		bat 'C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli --username=shekshukla --password=Kansas@12345 runtime-mgr cloudhub-application deploy --workers "$(WORKERS)" --workerSize "$(WORKER_SIZE)" --region "$(REGION)" $(APP_NAME) $FILENAME'
    
       }
       
