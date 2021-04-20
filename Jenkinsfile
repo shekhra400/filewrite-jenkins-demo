@@ -48,7 +48,7 @@ pipeline {
 		*/
 		
 		
-		bat 'C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli --username="shekshukla" --password="Kansas@12345" runtime-mgr cloudhub-application deploy --environment="Test" --runtime "4.3.0" --workers %WORKERS% --workerSize %WORKER_SIZE% --region %REGION% %APP_NAME% %FILENAME%'
+		bat 'C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli --username="ANYPOINT_CRED_USR" --password="ANYPOINT_CRED_PSW" runtime-mgr cloudhub-application deploy --environment="Test" --runtime "4.3.0" --workers %WORKERS% --workerSize %WORKER_SIZE% --region %REGION% %APP_NAME% %FILENAME%'
    
       }
       
