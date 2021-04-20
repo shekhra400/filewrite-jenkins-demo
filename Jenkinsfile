@@ -51,6 +51,6 @@ pipeline {
 		sh '~/.nvm/versions/node/v16.0.0/bin/anypoint-cli --username="shekshukla" '
       
     }
-    
+    }
   }
 }
