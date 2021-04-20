@@ -49,7 +49,6 @@ pipeline {
 		*/
 		echo "$JENKINS_HOME"
 		
-		sh "chmod +x -R ${env.WORKSPACE}"
 		sh(""" /var/www/html/scripts/anypoint.sh""")
       
     }
