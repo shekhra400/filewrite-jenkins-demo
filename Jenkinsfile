@@ -48,7 +48,7 @@ pipeline {
 		export filename = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
 		*/
 		
-		sh 'npm install -g anypoint-cli@latest'
+		sudo npm install -g anypoint-cli@latest
   		
 		
 		
