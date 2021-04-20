@@ -48,7 +48,7 @@ pipeline {
 		*/
 		
 		
-		bat 'C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli --username=${ANYPOINT_CRED_USR} --password=${ANYPOINT_CRED_PSW} runtime-mgr cloudhub-application deploy --environment="Test" --runtime "4.3.0" --workers "1" --workerSize "0.1" --region "us-east-1" "asas" "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"'
+		bat 'C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli --username="${ANYPOINT_CRED_USR}" --password="${ANYPOINT_CRED_PSW}" runtime-mgr cloudhub-application deploy --environment="Test" --runtime "4.3.0" --workers "1" --workerSize "0.1" --region "us-east-1" "asas" "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"'
    
       }
       
