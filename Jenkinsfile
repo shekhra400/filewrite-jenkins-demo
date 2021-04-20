@@ -14,7 +14,7 @@ pipeline {
         REGION = "us-east-1"
         WORKER_SIZE = "0.1"
         FILENAME = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
-        ANYPOINT_CLI = C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli
+        ANYPOINT_CLI = "C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli"
       }
   stages {
    /*
