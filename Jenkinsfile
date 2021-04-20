@@ -18,7 +18,7 @@ pipeline {
   stages {
     stage('Project Build') {
       steps {
-        bat "mvn -s ${params.MAVEN_SETTINGS_XML} clean install"
+        /* bat "mvn -s ${params.MAVEN_SETTINGS_XML} clean install" */
       }
     }
     
