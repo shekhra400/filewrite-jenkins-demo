@@ -51,6 +51,6 @@ pipeline {
 		sh 'anypoint-cli'
       
     }
-    
+    }
   }
 }
