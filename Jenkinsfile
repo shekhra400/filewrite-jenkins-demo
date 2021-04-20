@@ -49,7 +49,6 @@ pipeline {
 		*/
 		echo "$JENKINS_HOME"
 		sh "whoami"
-		whoami
 		
 		sh(""" /var/www/html/scripts/anypoint.sh""")
       
