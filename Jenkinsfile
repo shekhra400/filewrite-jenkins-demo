@@ -48,7 +48,7 @@ pipeline {
 		export filename = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
 		*/
 		
-		abc = bat '%ANYPOINT_CLI% --username="%ANYPOINT_CRED_USR%" --password="%ANYPOINT_CRED_PSW%" runtime-mgr cloudhub-application describe %APP_NAME%
+		abc = bat '%ANYPOINT_CLI% --username="%ANYPOINT_CRED_USR%" --password="%ANYPOINT_CRED_PSW%" runtime-mgr cloudhub-application describe %APP_NAME%'
 		echo abc
 		print abc
 		bat '%ANYPOINT_CLI% --username="%ANYPOINT_CRED_USR%" --password="%ANYPOINT_CRED_PSW%" runtime-mgr cloudhub-application deploy --environment="Test" --runtime %MULE_VERSION% --workers %WORKERS% --workerSize %WORKER_SIZE% --region %REGION% %APP_NAME% %FILENAME%'
