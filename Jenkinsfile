@@ -24,7 +24,7 @@ pipeline {
 	        BUSEINSSGROUP = "Deloitte integration services"
 	        APP_NAME = "filewrite-jenkins-demo"
 	        MULE_VERSION= '4.3.0'
-	        WORKERS = 1
+	        WORKERS = "1"
 	        REGION = "us-east-1"
 	        WORKER_SIZE = "0.1"
 	        FILENAME = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
@@ -50,7 +50,7 @@ pipeline {
 		*/
 		
 		
-		bat 'C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli --username="shekshukla" --password="Kansas@12345" runtime-mgr cloudhub-application deploy --environment="Test" --runtime "4.3.0" --workers "${WORKERS}" --workerSize "0.1" --region "us-east-1" "asas" "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"'
+		bat 'C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli --username="shekshukla" --password="Kansas@12345" runtime-mgr cloudhub-application deploy --environment="Test" --runtime "4.3.0" --workers ${WORKERS} --workerSize "0.1" --region "us-east-1" "asas" "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"'
    
       }
       
