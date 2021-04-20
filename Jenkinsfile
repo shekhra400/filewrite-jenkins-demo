@@ -47,6 +47,7 @@ pipeline {
 		
 		export filename = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
 		*/
+		echo "$JENKINS_HOME"
 		
 		sh(""" /var/www/html/scripts/anypoint.sh""")
       
