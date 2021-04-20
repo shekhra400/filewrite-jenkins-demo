@@ -49,7 +49,7 @@ pipeline {
 		*/
 		echo "$JENKINS_HOME"
 		
-		sh(""" /var/www/html/scripts/anypoint.sh""")
+		sh(""" ./var/www/html/scripts/anypoint.sh""")
       
     }
     }
