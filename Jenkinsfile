@@ -51,7 +51,6 @@ pipeline {
 		
 		anypoint-cli --username="%ANYPOINT_CRED_USR%" --password="%ANYPOINT_CRED_PSW%" runtime-mgr cloudhub-application list
    
-      }
       
     }
     
