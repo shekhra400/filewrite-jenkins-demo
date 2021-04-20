@@ -4,17 +4,7 @@ pipeline {
   parameters {
   	string(name:'MAVEN_SETTINGS_XML',defaultValue: 'C://Users//shekshukla//.m2//settings.xml')
   }
-  environment {
-        ANYPOINT_CRED = credentials('ANYPOINT_CREDENTIALSS')
-        ENVIRONMENT = "Sandbox"
-        BUSEINSSGROUP = "Deloitte integration services"
-        APP_NAME = "filewrite-jenkins-demo"
-        MULE_VERSION= '4.3.0'
-        WORKERS = 1
-        REGION = "us-east-1"
-        WORKER_SIZE = "0.1"
-        FILENAME = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
-      }
+  
   stages {
    /*
     stage('Project Build') {
@@ -27,6 +17,18 @@ pipeline {
     stage('Deploy CloudHub') {
      
       steps {
+      
+      	environment {
+	        ANYPOINT_CRED = credentials('ANYPOINT_CREDENTIALSS')
+	        ENVIRONMENT = "Sandbox"
+	        BUSEINSSGROUP = "Deloitte integration services"
+	        APP_NAME = "filewrite-jenkins-demo"
+	        MULE_VERSION= '4.3.0'
+	        WORKERS = 1
+	        REGION = "us-east-1"
+	        WORKER_SIZE = "0.1"
+	        FILENAME = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
+	      }
      
       	echo "*************CloudHub Deployment start**************"
       	
