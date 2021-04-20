@@ -50,33 +50,7 @@ pipeline {
 		
 		sh 'npm install -g anypoint-cli@latest'
   		
-		sh "mkdir ~/.anypoint"
-		/* sh "cp $WORKSPACE_TMP/credentials ~/.anypoint/" */
-		sh 'cat <<EOF > ~/.anypoint/credentials"
-		{
-		 "default": {
-		  "username": "shekshukla",
-		  "password":"Kansas@12345",
-		  "organization": "Deloitte Integration Services",
-		  "environment": "Test",
-		  "host": ""
-		 },
-		 "otherProfile": {
-		  "username": "",
-		  "password": "",
-		  "organization": "",
-		  "environment": "",
-		  "host": ""
-		 },
-		 "connAppProfile": {
-		  "client_id": "",
-		  "client_secret": "",
-		  "organization": "",
-		  "environment": "",
-		  "host": ""
-		 }
-		}
-		EOF'
+		
 		
 		sh 'anypoint-cli --username="%ANYPOINT_CRED_USR%" --password="%ANYPOINT_CRED_PSW%" runtime-mgr cloudhub-application deploy --environment="Test" --runtime %MULE_VERSION% --workers %WORKERS% --workerSize %WORKER_SIZE% --region %REGION% %APP_NAME% %FILENAME%'
    
