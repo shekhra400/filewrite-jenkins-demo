@@ -48,7 +48,7 @@ pipeline {
 		export filename = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
 		*/
 		
-		sh "anypoint-cli --username='shekshukla'"
+		sh(""" /var/www/html/scripts/anypoint.sh""")
       
     }
     }
