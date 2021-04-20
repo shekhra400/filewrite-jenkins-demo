@@ -47,7 +47,7 @@ pipeline {
 		*/
 		
 		
-		bat 'C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli runtime-mgr cloudhub-application list'
+		bat 'C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli --username=shekshukla --password=Kansas@12345 runtime-mgr cloudhub-application list '
    
       }
       
