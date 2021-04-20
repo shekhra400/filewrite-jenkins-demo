@@ -16,11 +16,13 @@ pipeline {
         FILENAME = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
       }
   stages {
+   /*
     stage('Project Build') {
       steps {
-        /* bat "mvn -s ${params.MAVEN_SETTINGS_XML} clean install" */
+        bat "mvn -s ${params.MAVEN_SETTINGS_XML} clean install" 
       }
     }
+    */
     
     stage('Deploy CloudHub') {
      
