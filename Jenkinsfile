@@ -56,17 +56,9 @@ pipeline {
 		sh"/home/ec2-user/.nvm/versions/node/v16.0.0/bin/npm install -g redux runtime-mgr cloudhub-application deploy --workers 1 --workerSize 0.1 --region us-east-1 first-app-aws-1 target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
       	sh 'mkdir .anypoint'
       */
-      sh `cat <<EOF > ~/.anypoint/credentials
-			{
-			 "default": {
-				  "username": "shekshukla",
-				  "password":"Kansas@12345",
-				  "organization": "Deloitte Integration Services",
-				  "environment": "Test",
-				  "host": ""
-			 	}
-			 }
-		EOF´
+      sh 'cat <<EOF > ~/.anypoint/credentials
+			{"id" : "aa"}
+		EOF'
       }
     }
   }
