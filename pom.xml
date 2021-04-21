@@ -4,7 +4,7 @@
 
 	<groupId>com.mycompany</groupId>
 	<artifactId>filewrite-jenkins-demo</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>mule-application</packaging>
 
 	<name>filewrite-jenkins-demo</name>
@@ -40,7 +40,7 @@
 				      <workers>${workers}</workers>
 				      <region>${region}</region>
             		  <workerType>${workerType}</workerType>
-					  <businessGroup>${businessGroup}</businessGroup>
+					  <businessGroup>${cloudhub.bg}</businessGroup>
 			    	</cloudHubDeployment>
 				</configuration>
 			</plugin>
