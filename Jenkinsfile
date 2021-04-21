@@ -57,7 +57,7 @@ pipeline {
       	sh 'mkdir .anypoint'
       */
       sh 'mkdir ~/.anypoint'
-      sh 'cat <<EOF > ~/.anypoint/credentials {"id" : "aa"} EOF'
+      
       }
     }
   }
