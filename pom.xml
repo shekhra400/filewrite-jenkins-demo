@@ -40,7 +40,7 @@
 				      <workers>${workers}</workers>
 				      <region>${region}</region>
             		  <workerType>${workerType}</workerType>
-					  <businessGroup>${cloudhub.bg}</businessGroup>
+					  <businessGroup>Deloitte Integration Service</businessGroup>
 			    	</cloudHubDeployment>
 				</configuration>
 			</plugin>
