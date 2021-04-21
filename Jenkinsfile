@@ -5,7 +5,7 @@ pipeline {
   	string(name:'MAVEN_SETTINGS_XML',defaultValue: 'C://Users//shekshukla//.m2//settings.xml')
   }
   
-  tools {nodejs: "node"}
+  tools {nodejs "node"}
   
   environment {
         ANYPOINT_CRED = credentials('ANYPOINT_CREDENTIALSS')
