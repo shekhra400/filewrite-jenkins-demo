@@ -1,4 +1,4 @@
-
+def myVariable = "Deloitte Integration Services"
 pipeline {
   agent any
   parameters {
@@ -6,45 +6,53 @@ pipeline {
   }
   environment {
         ANYPOINT_CRED = credentials('ANYPOINT_CREDENTIALSS')
-        ENVIRONMENT = "Test"
+        ENVIRONMENT = "Sandbox"
         BUSEINSSGROUP = "Deloitte integration services"
         APP_NAME = "filewrite-jenkins-demo"
         MULE_VERSION= '4.3.0'
         WORKERS = "1"
         REGION = "us-east-1"
         WORKER_SIZE = "0.1"
-        FILENAME = "target/filewrite-jenkins-demo-1.0.1-mule-application.jar"
+        FILENAME = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
         /* ANYPOINT_CLI = "C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli" */
-        BUSINESS_GROUP = "Deloitte Integration Services"
-        ARTIFACT_IMPORT_DIR = "C://Users//shekshukla//Documents//Mule//imported-projects//"
       }
-      
   stages {
-   stage('Project Build') {
+   /*
+    stage('Project Build') {
       steps {
-        bat "mvn -s ${params.MAVEN_SETTINGS_XML} clean install"
+        sh "mvn clean install"
       }
     }
-    
-    stage('Deploy to Nexus Artifactory') {
-      steps {
-      	echo "*************Nexus Deployment start**************"
-        bat "mvn -s ${params.MAVEN_SETTINGS_XML} deploy:deploy-file -DgroupId=com.mycompany -DartifactId=filewrite-jenkins-demo -Dversion=1.0.1 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=nexus -Durl=http://localhost:9091/repository/filewrite-jenkins-demo -Dfile=target/filewrite-jenkins-demo-1.0.1-mule-application.jar"
-      }
-    }
-    
-    stage('Fetch Artifacts') {
-    	steps {
-    		echo "**********Fetch artifacts************"
-    		bat 'curl -X GET  http://localhost:9091/repository/filewrite-jenkins-demo/com/mycompany/filewrite-jenkins-demo/1.0.1/filewrite-jenkins-demo-1.0.1.jar --output C://Users//shekshukla//Documents//Mule//imported-projects//filewrite-jenkins-demo-1.0.1.jar'
-    	}
-    }
+    */
     
     stage('Deploy CloudHub') {
-     steps {
+     
+      steps {
+     
       	echo "*************CloudHub Deployment start**************"
-        bat 'mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=%MULE_VERSION% -Danypoint.username="%ANYPOINT_CRED_USR%" -Danypoint.password="%ANYPOINT_CRED_PSW%" -Dcloudhub.env="%ENVIRONMENT%" -Dappname="%APP_NAME%" -Dworkers=%WORKERS% -DworkerType="%WORKER_TYPE%"'
-      }
-	}
+      	
+      	
+      	
+       /*	
+       bat 'npm install -g anypoint-cli@latest'
+      	bat 'mkdir .anypoint'
+      	bat 'copy C://Users//shekshukla//.anypoint//credentials //.anypoint//'
+       bat 'copy C://Users//shekshukla//.anypoint//credentials ~//.anypoint//'
+  		
+		#mkdir ~/.anypoint
+		#cp $WORKSPACE_TMP/credentials ~/.anypoint/
+
+		#export ANYPOINT_PROFILE="Sandbox"
+		#export filename="$(Release.PrimaryArtifactSourceAlias)/drop/target/anypoint-cli-test-1.0.0-SNAPSHOT-mule-application.jar"
+		
+		export filename = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
+		*/
+		echo "$JENKINS_HOME"
+		sh ("""whoami""")
+		
+		sh"/home/ec2-user/.nvm/versions/node/v16.0.0/bin/anypoint-cli runtime-mgr cloudhub-application deploy --workers 1 --workerSize 0.1 --region us-east-1 first-app-aws-1 target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
+      
+    }
+    }
   }
 }
