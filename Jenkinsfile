@@ -38,12 +38,8 @@ pipeline {
 
       	echo "*************CloudHub Deployment start**************"
         bat 'mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=%MULE_VERSION% -Danypoint.username="%ANYPOINT_CRED_USR%" -Danypoint.password="%ANYPOINT_CRED_PSW%" -Dcloudhub.env="%ENVIRONMENT%" -Dappname="%APP_NAME%" -Dworkers=%WORKERS% -DworkerType="%WORKER_TYPE%" -Dcloudhub.bg="%BUSEINSSGROUP%" '
-      
-        
-        
+ 
       }
 
-    }
-    }
   }
 }
