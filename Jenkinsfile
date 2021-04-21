@@ -4,6 +4,9 @@ pipeline {
   parameters {
   	string(name:'MAVEN_SETTINGS_XML',defaultValue: 'C://Users//shekshukla//.m2//settings.xml')
   }
+  
+  tools {nodejs: "node"}
+  
   environment {
         ANYPOINT_CRED = credentials('ANYPOINT_CREDENTIALSS')
         ENVIRONMENT = "Sandbox"
@@ -46,12 +49,13 @@ pipeline {
 		#export filename="$(Release.PrimaryArtifactSourceAlias)/drop/target/anypoint-cli-test-1.0.0-SNAPSHOT-mule-application.jar"
 		
 		export filename = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
-		*/
+		
 		echo "$JENKINS_HOME"
 		sh ("""whoami""")
 		
-		sh"/home/ec2-user/.nvm/versions/node/v16.0.0/bin/npm install -g redux"
-      
+		sh"/home/ec2-user/.nvm/versions/node/v16.0.0/bin/npm install -g redux runtime-mgr cloudhub-application deploy --workers 1 --workerSize 0.1 --region us-east-1 first-app-aws-1 target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
+      */
+      sh 'npm install -g anypoint-cli@latest'
     }
     }
   }
