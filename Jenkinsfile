@@ -6,7 +6,8 @@ pipeline {
   }
   
   tools {
-  			maven "3.6.3"
+  			nodejs "node"
+  			maven "maven"
   		}
   
   environment {
