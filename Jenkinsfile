@@ -17,16 +17,14 @@ pipeline {
         REGION = "us-east-1"
         WORKER_SIZE = "0.1"
         FILENAME = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
-        /* ANYPOINT_CLI = "C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli" */
       }
   stages {
-   /*
+  
     stage('Project Build') {
       steps {
         sh "mvn clean install"
       }
     }
-    */
     
     stage('Deploy CloudHub') {
      
@@ -58,7 +56,7 @@ pipeline {
       	sh 'mkdir .anypoint'
       */
       
-      sh 'anypoint-cli runtime-mgr cloudhub-application list'
+      sh 'anypoint-cli runtime-mgr cloudhub-application deploy --environment="Test" --runtime %MULE_VERSION% --workers %WORKERS% --workerSize %WORKER_SIZE% --region %REGION% %APP_NAME% %FILENAME%'
       
       }
     }
