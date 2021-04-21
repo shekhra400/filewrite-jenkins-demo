@@ -54,9 +54,9 @@ pipeline {
 		sh ("""whoami""")
 		
 		sh"/home/ec2-user/.nvm/versions/node/v16.0.0/bin/npm install -g redux runtime-mgr cloudhub-application deploy --workers 1 --workerSize 0.1 --region us-east-1 first-app-aws-1 target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
-      sh 'mkdir .anypoint'
+      	sh 'mkdir .anypoint'
       */
-      cat <<EOF > ~/.anypoint/credentials
+      sh 'cat <<EOF > ~/.anypoint/credentials
 			{
 			 "default": {
 				  "username": "shekshukla",
@@ -66,10 +66,8 @@ pipeline {
 				  "host": ""
 			 	}
 			 }
-		EOF
-      sh 'ls ~/.anypoint/'
-      /* sh 'anypoint-cli runtime-mgr cloudhub-application list' */
-    }
+		EOF'
+      }
     }
   }
 }
