@@ -16,6 +16,7 @@ pipeline {
         FILENAME = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
         /* ANYPOINT_CLI = "C://Users//shekshukla//AppData//Roaming//npm//anypoint-cli" */
         BUSINESS_GROUP = "Deloitte Integration Services"
+        ARTIFACT_IMPORT_DIR = "C://Users//shekshukla//Documents//Mule//imported-projects//"
       }
       
   stages {
@@ -30,6 +31,13 @@ pipeline {
       	echo "*************Nexus Deployment start**************"
         bat "mvn -s ${params.MAVEN_SETTINGS_XML} deploy:deploy-file -DgroupId=com.mycompany -DartifactId=filewrite-jenkins-demo -Dversion=1.0.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=nexus -Durl=http://localhost:9091/repository/filewrite-jenkins-demo -Dfile=target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
       }
+    }
+    
+    stage('Fetch Artifacts') {
+    	steps {
+    		echo "**********Fetch artifacts************"
+    		bat 'curl -X GET  http://localhost:9091/repository/filewrite-jenkins-demo/com/mycompany/filewrite-jenkins-demo/1.0.0/filewrite-jenkins-demo-1.0.0.jar --output C://Users//shekshukla//Documents//Mule//imported-projects//filewrite-jenkins-demo-1.0.0.jar'
+    	}
     }
     
     stage('Deploy CloudHub') {
