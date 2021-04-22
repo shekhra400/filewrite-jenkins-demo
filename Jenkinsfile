@@ -32,41 +32,20 @@ pipeline {
     stage('Deploy CloudHub') {
      
       steps {
-     
       	echo "*************CloudHub Deployment start**************"
-      	
-      	
-      	
+      		
        /*	
-       bat 'npm install -g anypoint-cli@latest'
-      	bat 'mkdir .anypoint'
-      	bat 'copy C://Users//shekshukla//.anypoint//credentials //.anypoint//'
-       bat 'copy C://Users//shekshukla//.anypoint//credentials ~//.anypoint//'
-  		
-		#mkdir ~/.anypoint
-		#cp $WORKSPACE_TMP/credentials ~/.anypoint/
-
-		#export ANYPOINT_PROFILE="Sandbox"
-		#export filename="$(Release.PrimaryArtifactSourceAlias)/drop/target/anypoint-cli-test-1.0.0-SNAPSHOT-mule-application.jar"
-		
-		export filename = "target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
-		
-		echo "$JENKINS_HOME"
-		sh ("""whoami""")
-		sh 'mkdir ~/.anypoint/ cat <<EOF > ~/.anypoint/credentials {"id" : "aa"} EOF'
-		
-		sh"/home/ec2-user/.nvm/versions/node/v16.0.0/bin/npm install -g redux runtime-mgr cloudhub-application deploy --workers 1 --workerSize 0.1 --region us-east-1 first-app-aws-1 target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
-      	sh 'mkdir .anypoint'
-      
-      
       	ret=sh(script: 'anypoint-cli runtime-mgr cloudhub-application describe ${APP_NAME} --output json --fields Domain', returnStdout: true).trim()
 		println ret
       
-       sh 'anypoint-cli runtime-mgr cloudhub-application deploy --environment="Test" --runtime ${MULE_VERSION} --workers ${WORKERS} --workerSize ${WORKER_SIZE} --region ${REGION} ${APP_NAME} ${FILENAME}' */
-      
-      
-      	def dir1 = sh(script:'ls -la dir1', returnStdout:true).trim()
-      	echo $dir1
+       	sh 'anypoint-cli runtime-mgr cloudhub-application deploy --environment="Test" --runtime ${MULE_VERSION} --workers ${WORKERS} --workerSize ${WORKER_SIZE} --region ${REGION} ${APP_NAME} ${FILENAME}' 
+       */
+       
+       BUILD_FULL = sh (
+		    script: "anypoint-cli runtime-mgr cloudhub-application describe ${APP_NAME}",
+		    returnStatus: true
+			) == 0
+		echo "Build full flag: ${BUILD_FULL}"
       }
     }
   }
