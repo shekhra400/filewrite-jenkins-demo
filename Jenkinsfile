@@ -59,7 +59,10 @@ pipeline {
       	sh 'mkdir .anypoint'
       */
       
-      sh 'anypoint-cli runtime-mgr cloudhub-application deploy --environment="Test" --runtime ${MULE_VERSION} --workers ${WORKERS} --workerSize ${WORKER_SIZE} --region ${REGION} ${APP_NAME} ${FILENAME}'
+      	def ret = sh(script: 'anypoint-cli runtime-mgr cloudhub-application describe ${APP_NAME}', returnStdout: true)
+		println ret
+      
+      /* sh 'anypoint-cli runtime-mgr cloudhub-application deploy --environment="Test" --runtime ${MULE_VERSION} --workers ${WORKERS} --workerSize ${WORKER_SIZE} --region ${REGION} ${APP_NAME} ${FILENAME}' */
       
       }
     }
