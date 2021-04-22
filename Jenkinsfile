@@ -46,7 +46,8 @@ pipeline {
 			    script: "anypoint-cli runtime-mgr cloudhub-application describe ${APP_NAME} --fields Domain --output json",
 			    returnStdout: true
 			).trim()
-			echo "${BUILD_FULL} ----"
+			echo "${BUILD_FULL} ---- echo '${BUILD_FULL}' | jq 'Domain'
+			"
        }
        
       }
