@@ -64,7 +64,7 @@ pipeline {
       
        sh 'anypoint-cli runtime-mgr cloudhub-application deploy --environment="Test" --runtime ${MULE_VERSION} --workers ${WORKERS} --workerSize ${WORKER_SIZE} --region ${REGION} ${APP_NAME} ${FILENAME}' */
       
-      */
+      
       	def dir1 = sh(script:'ls -la dir1', returnStdout:true).trim()
       	echo $dir1
       }
