@@ -45,7 +45,7 @@ pipeline {
        		BUILD_FULL = sh (
 			    script: "anypoint-cli runtime-mgr cloudhub-application describe ${APP_NAME}",
 			    returnStdout: true
-			).trim
+			).trim()
 			println $BUILD_FULL
        }
        
