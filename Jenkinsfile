@@ -41,11 +41,14 @@ pipeline {
        	sh 'anypoint-cli runtime-mgr cloudhub-application deploy --environment="Test" --runtime ${MULE_VERSION} --workers ${WORKERS} --workerSize ${WORKER_SIZE} --region ${REGION} ${APP_NAME} ${FILENAME}' 
        */
        
-       BUILD_FULL = sh (
-		    script: "anypoint-cli runtime-mgr cloudhub-application describe ${APP_NAME}",
-		    returnStatus: true
+       script {
+       		BUILD_FULL = sh (
+			    script: "anypoint-cli runtime-mgr cloudhub-application describe ${APP_NAME}",
+			    returnStatus: true
 			) == 0
-		echo "Build full flag: ${BUILD_FULL}"
+			echo "Build full flag: ${BUILD_FULL}"
+       }
+       
       }
     }
   }
