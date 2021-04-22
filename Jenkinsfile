@@ -44,9 +44,9 @@ pipeline {
        script {
        		BUILD_FULL = sh (
 			    script: "anypoint-cli runtime-mgr cloudhub-application describe ${APP_NAME}",
-			    returnStatus: true
-			) == 0
-			echo "Build full flag: ${BUILD_FULL}"
+			    returnStdout: true
+			).trim
+			println $BUILD_FULL
        }
        
       }
