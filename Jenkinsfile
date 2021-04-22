@@ -57,13 +57,16 @@ pipeline {
 		
 		sh"/home/ec2-user/.nvm/versions/node/v16.0.0/bin/npm install -g redux runtime-mgr cloudhub-application deploy --workers 1 --workerSize 0.1 --region us-east-1 first-app-aws-1 target/filewrite-jenkins-demo-1.0.0-mule-application.jar"
       	sh 'mkdir .anypoint'
-      */
+      
       
       	ret=sh(script: 'anypoint-cli runtime-mgr cloudhub-application describe ${APP_NAME} --output json --fields Domain', returnStdout: true).trim()
 		println ret
       
-      /* sh 'anypoint-cli runtime-mgr cloudhub-application deploy --environment="Test" --runtime ${MULE_VERSION} --workers ${WORKERS} --workerSize ${WORKER_SIZE} --region ${REGION} ${APP_NAME} ${FILENAME}' */
+       sh 'anypoint-cli runtime-mgr cloudhub-application deploy --environment="Test" --runtime ${MULE_VERSION} --workers ${WORKERS} --workerSize ${WORKER_SIZE} --region ${REGION} ${APP_NAME} ${FILENAME}' */
       
+      */
+      	def dir1 = sh(script:'ls -la dir1', returnStdout:true).trim()
+      	echo $dir1
       }
     }
   }
