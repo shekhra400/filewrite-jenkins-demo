@@ -46,8 +46,8 @@ pipeline {
 			    script: "anypoint-cli runtime-mgr cloudhub-application describe ${APP_NAME} --fields Domain --output json",
 			    returnStdout: true
 			).trim()
-			echo "${BUILD_FULL} ----"
-			def stuff = new JsonSlurper().parseText($BUILD_FULL).Domain
+			KEY=$(jq -r 'Domain' <<< "$DATA")
+			echo "${BUILD_FULL} ----${KEY}"
 			
        }
        
