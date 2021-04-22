@@ -47,7 +47,8 @@ pipeline {
 			    returnStdout: true
 			).trim()
 			echo "${BUILD_FULL} ----"
-			echo '${BUILD_FULL}' | jq 'Domain'
+			def stuff = new JsonSlurper().parseText($BUILD_FULL).Domain
+			
        }
        
       }
