@@ -27,7 +27,7 @@ pipeline {
       	
       	
        
-		bat '%ANYPOINT_CLI% --username="%ANYPOINT_CRED_USR%" --password="%ANYPOINT_CRED_PSW%" runtime-mgr standalone-application deploy test321 aaaa "C://Users//shekshukla//Documents//Mule//exported Projects//helloworld.jar"'
+		bat '%ANYPOINT_CLI% --username="%ANYPOINT_CRED_USR%" --password="%ANYPOINT_CRED_PSW%" runtime-mgr standalone-application deploy "test321" "aaaa" "C://Users//shekshukla//Documents//Mule//exported Projects//helloworld.jar"'
    
       }
       
