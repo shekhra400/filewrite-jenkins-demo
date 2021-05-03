@@ -31,7 +31,7 @@ pipeline {
     stage('Deploy To Local On-Prem') {
      steps {
       	echo "*************CloudHub Deployment start**************"
-        bat 'mvn deploy -DskipTests -DmuleDeploy -Dmule.home=${MULE_HOME_DIR}'
+        bat 'mvn deploy -DskipTests -DmuleDeploy -Dmule.home=%MULE_HOME_DIR%'
       }
 	}
   }
