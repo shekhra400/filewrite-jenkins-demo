@@ -27,7 +27,7 @@ pipeline {
     
     stage('Run Unit Tests') {
       steps {
-        bat "mvn test"
+        bat "mvn -s ${params.MAVEN_SETTINGS_XML} test"
       }
     }
     
