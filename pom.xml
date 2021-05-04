@@ -26,17 +26,23 @@
 				<version>3.0.0</version>
 			</plugin>
 			<plugin>
-
-			<groupId>org.mule.tools.maven</groupId>
-			<artifactId>mule-maven-plugin</artifactId>
-			<version>${mule.maven.plugin.version}</version>
-			<extensions>true</extensions>
-			<configuration>
-			  <standaloneDeployment>
-			  	<muleHome>${mule.home}</muleHome>
-			 	<muleVersion>4.3.0</muleVersion>
-			  </standaloneDeployment>
-			</configuration>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<cloudHubDeployment>
+				      <muleVersion>${mule.version}</muleVersion>
+				      <username>${anypoint.username}</username>
+				      <password>${anypoint.password}</password>
+				      <applicationName>${appname}</applicationName>
+				      <environment>${env}</environment>
+				      <workers>${workers}</workers>
+				      <region>${region}</region>
+            		  <workerType>${workerType}</workerType>
+					  <businessGroup>Deloitte Integration Service</businessGroup>
+			    	</cloudHubDeployment>
+				</configuration>
 			</plugin>
 		<plugin>
                 <groupId>com.mulesoft.munit.tools</groupId>
