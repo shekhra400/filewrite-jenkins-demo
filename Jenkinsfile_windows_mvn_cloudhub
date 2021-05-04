@@ -25,6 +25,12 @@ pipeline {
       }
     }
     
+    stage('Run Unit Tests') {
+      steps {
+        bat "mvn test"
+      }
+    }
+    
     stage('Deploy to Nexus Artifactory') {
       steps {
       	echo "*************Nexus Deployment start**************"

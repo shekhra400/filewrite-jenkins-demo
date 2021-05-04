@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="filewrite-jenkins-demo-test-suite.xml" />
+	<munit:test name="filewrite-jenkins-demo-test-suite-filewrite-jenkins-demoFlowTest" doc:id="5035bea4-5bfd-405d-8e70-1f8486034fdc" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="1fc9194e-eea4-4e6e-ab1a-e5ca532fb7ab" >
+				<munit:attributes value='#[{"uriParams": {"resourceType":"users"}}]' />
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to filewrite-jenkins-demoFlow" doc:id="d3eb9ba2-931d-4d4f-ae81-442ada455176" name="filewrite-jenkins-demoFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="ff805705-be9d-41f3-aff3-f489d166f336" is="#[MunitTools::notNullValue()]" expression="#[payload]"/>
+		</munit:validation>
+	</munit:test>
+
+
+
+</mule>
