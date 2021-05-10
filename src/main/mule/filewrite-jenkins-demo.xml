@@ -7,11 +7,12 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="487a0817-22a3-4dda-a308-6d47d6da94cf" >
-		<http:listener-connection host="0.0.0.0" port="8089" />
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
 	</http:listener-config>
 	<file:config name="File_Config" doc:name="File Config" doc:id="579e0872-134a-4f45-8a9e-e4f26fc7c7f8" >
 		<file:connection workingDir="C:\Users\shekshukla\AnypointStudio\studio-workspace\filewrite-jenkins-demo\src\main\resources\output" />
 	</file:config>
+	<configuration-properties doc:name="Configuration properties" doc:id="43ce81dd-ee84-4ffb-82d0-c08fc4766ec3" file="app-config.properties" />
 	<flow name="filewrite-jenkins-demoFlow" doc:id="61d90ed1-1add-4e1d-877f-213597d24f40" >
 		<http:listener doc:name="Listener" doc:id="078e6988-1fb8-4592-8076-fee547b3c2b5" path="/write/{resourceType}" config-ref="HTTP_Listener_config"/>
 		<set-variable value="#[attributes.uriParams.resourceType]" doc:name="Set Variable" doc:id="5ed109a0-41e8-4a5e-9ed3-bf4e94639b45" variableName="resourceType"/>
@@ -23,17 +24,11 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 				<ee:transform doc:name="Transform Message" doc:id="6e5672e3-6068-4545-ba92-e031b077e493">
 					<ee:message>
 						<ee:set-payload><![CDATA[%dw 2.0
-output application/csv
+output application/json
 ---
-payload map ( payload01 , indexOfPayload01 ) -> {
-	name: payload01.name,
-	username: payload01.username,
-	phone: payload01.phone,
-	email: payload01.email
-}]]></ee:set-payload>
+payload]]></ee:set-payload>
 					</ee:message>
 				</ee:transform>
-				<file:write doc:name="Write" doc:id="9d84d13e-6c5c-47b9-9b7b-de4f0945bbde" config-ref="File_Config" path="users.csv"/>
 				<logger level="INFO" doc:name="Logger" doc:id="e4aecdac-3d77-4b25-b78c-1169db54fbff" />
 			</when>
 			<otherwise >
@@ -41,17 +36,12 @@ payload map ( payload01 , indexOfPayload01 ) -> {
 				<ee:transform doc:name="Transform Message" doc:id="16035e75-4034-4585-bacc-c29aa1a10503">
 					<ee:message>
 						<ee:set-payload><![CDATA[%dw 2.0
-output application/csv
+output application/json
 ---
-payload map ( payload01 , indexOfPayload01 ) -> {
-	name: payload01.title,
-	userId: payload01.userId as String,
-	body: payload01.body
-}]]></ee:set-payload>
+payload]]></ee:set-payload>
 					</ee:message>
 				</ee:transform>
 				<logger level="INFO" doc:name="Logger" doc:id="f795eb0c-ce42-4c44-8732-ef1bc3446a2d" />
-				<file:write doc:name="Write" doc:id="4b988ca2-f7d9-436b-96da-7485e6174095" config-ref="File_Config" path="posts.csv"/>
 			</otherwise>
 		</choice>
 		<logger level="INFO" doc:name="Logger" doc:id="dd12620f-6c20-4e11-a422-6049727ed72d" />
